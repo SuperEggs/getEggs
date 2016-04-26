@@ -28,7 +28,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     auto director = Director::getInstance();
     auto glview = director->getOpenGLView();
     if(!glview) {
-        glview = GLViewImpl::createWithRect("GetEggsProject", Rect(0, 0, 960, 640));
+		glview = GLViewImpl::createWithRect("GetEggsProject", Rect(0, 0, 960, 640));
         director->setOpenGLView(glview);
     }
 

@@ -1,4 +1,5 @@
 #include "MainMenuLayer.h"
+#include "GameScene.h"
 
 USING_NS_CC;
 
@@ -32,9 +33,11 @@ bool MainMenuLayer::init(){
 	SpriteFrameCache::getInstance()->addSpriteFramesWithFile("MainMenu/UI_GameMenuText_cn-hd.plist");
 
 	//创建“开始游戏”按钮
-	auto startGameBtn = Sprite::createWithSpriteFrameName("4.png");//按钮初始状态
-	auto startGameBtnSelected = Sprite::createWithSpriteFrameName("4.png");//按钮初始状态
-	startGameBtnSelected->setScale(0.5f);
+	//auto startGameBtn = Sprite::createWithSpriteFrameName("MainMenu/btn1.png");//按钮初始状态
+	//auto startGameBtnSelected = Sprite::createWithSpriteFrameName("MainMenu/btn1.png");//按钮初始状态
+	auto startGameBtn = Sprite::create("MainMenu/start.png");
+	auto startGameBtnSelected = Sprite::create("MainMenu/start.png");
+	startGameBtnSelected->setScale(0.9f);
 	//startGameBtnSelected->setColor(RGB3B(123,213,111));
 	//startGameBtnSelected->setAnchorPoint(Point(0.5, 0.5));
 	
@@ -55,5 +58,9 @@ bool MainMenuLayer::init(){
 }
 
 void MainMenuLayer::startGameEvent(Ref* sender){
+	//Create the scene of FishingScene with a transtionFadeBL effect
+	auto replaceScene = TransitionSplitRows::create(1.5, GameLayer::createScene());
 
+	//Replace the scene with the trasition effect scene
+	Director::getInstance()->replaceScene(replaceScene);
 }
