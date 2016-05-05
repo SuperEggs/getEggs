@@ -27,9 +27,18 @@ bool GameLayer::init(){
 	egg->setPosition(Point(100,100));
 	addChild(egg, 1);
 
-	auto basket = Sprite::create("MainMenu/basket.png");
-	basket->setPosition(Point(400, 100));
-	addChild(basket, 2);
+//	auto basket = Sprite::create("MainMenu/basket.png");
+//	basket->setPosition(Point(400, 100));
+//	addChild(basket, 2);
+	Size size = Director::sharedDirector()->getWinSize();
+	basket = Basket::basket(size);
+	addChild(basket);
+	
+	schedule(schedule_selector(GameLayer::update));
 
 	return true;
+}
+
+void GameLayer::update(float ft){
+	basket->update();
 }
